@@ -16,13 +16,13 @@ public class TextBoxTests {
         String permanentAddress = "2279 3rd Ave";
         open("https://demoqa.com/text-box");
 
-        $("[id=userName]").setValue(name);
-        $("[id=userEmail]").setValue(email);
-        $("[id=currentAddress]").setValue(currentAddress);
-        $("[id=permanentAddress]").setValue(permanentAddress);
-        $("[id=submit]").click();
+        $("[id='userName']").setValue(name);
+        $("[id='userEmail']").setValue(email);
+        $("[id='currentAddress']").setValue(currentAddress);
+        $("[id='permanentAddress']").setValue(permanentAddress);
+        $("[id='submit']").click();
 
-        $("[id=output]").shouldHave(text(email), text(name), text(currentAddress), text(permanentAddress));
+        $("[id='output']").shouldHave(text(email), text(name), text(currentAddress), text(permanentAddress));
         sleep(4000);
     }
 }
