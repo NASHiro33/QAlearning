@@ -1,7 +1,12 @@
 package tests;
 
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import java.io.File;
 
@@ -55,5 +60,15 @@ public class PracticeFormTests {
                 text("2279, Dunder Mifflin office, Scranton, Pennsylvania state"),
                 text("NCR Delhi")
         );
+    }
+
+    @Test
+    void DragNdropTest() //doesn't work because selenium use user's mouse instead of virtual.
+    {
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+
+        actions().clickAndHold($("[id='column-a']")).moveToElement($("[id='column-b']")).release().perform();
+
+        $("[id='column-a'] header").shouldHave(text("B"));
     }
 }
