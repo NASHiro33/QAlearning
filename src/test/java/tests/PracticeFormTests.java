@@ -4,6 +4,7 @@ package tests;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -18,6 +19,8 @@ public class PracticeFormTests {
 
     @Test
     void checkPracticeFormOutput() {
+        Faker faker = new Faker();
+
         open("https://demoqa.com/automation-practice-form");
 
         $("[class='main-header']").shouldHave(text("Practice Form"));
