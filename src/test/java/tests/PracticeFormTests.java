@@ -5,11 +5,17 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.Random;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.*;
@@ -29,7 +35,7 @@ public class PracticeFormTests {
 
         open("https://demoqa.com/automation-practice-form");
         $("[class='main-header']").shouldHave(text("Practice Form"));
-
+        //filling the form
         $("[id='firstName']").setValue(firstName);
         $("[id='lastName']").setValue(lastName);
         $("[id='userEmail']").setValue(email);
@@ -43,14 +49,14 @@ public class PracticeFormTests {
         //subjects
         $("[id='subjectsContainer']").click();
         $("[id='subjectsInput']").setValue("ar");
-        $("[class='subjects-auto-complete__menu css-26l3qy-menu']").$(byText("Arts")).click();
+        $(byText("Arts")).click();
         $("[id='subjectsInput']").setValue("c");
-        $("[class='subjects-auto-complete__menu css-26l3qy-menu']").$(byText("Chemistry")).click();
+        $(byText("Chemistry")).click();
         $("[id='subjectsInput']").setValue("m");
-        $("[class='subjects-auto-complete__menu css-26l3qy-menu']").$(byText("Maths")).click();
-        //the whole form
-        $(by("for","hobbies-checkbox-2")).click();
-        $(by("for","hobbies-checkbox-3")).click();
+        $(byText("Maths")).click();
+        //the rest form
+        $("[id='hobbiesWrapper']").$(byText("Reading")).click();
+        $("[id='hobbiesWrapper']").$(byText("Music")).click();
         $("[id='uploadPicture']").uploadFile(new File("src/test/java/docs/Junit5Annotations.java"));
         $("[id='currentAddress']").setValue(address);
         $("[id='state']").click();
