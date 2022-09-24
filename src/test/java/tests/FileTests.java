@@ -1,7 +1,9 @@
 package tests;
 
 import com.codeborne.pdftest.PDF;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.codeborne.xlstest.XLS;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 import utils.ZipUtils;
 
@@ -16,6 +18,7 @@ public class FileTests
     @Test
     void checkTextInPdf()
     {
+        SelenideLogger.addListener("allure", new AllureSelenide());//подключаем листенера
         //data
         String filePath     = "./src/test/resources/data/Google.pdf";
         String expectedText = "google";
@@ -30,6 +33,7 @@ public class FileTests
     @Test
     void checkTextInXls()
     {
+        SelenideLogger.addListener("allure", new AllureSelenide());//подключаем листенера
         //data
         String filePath     = "./src/test/resources/data/testFile.xls";
         String expectedText = "Апатиты";
@@ -44,7 +48,9 @@ public class FileTests
     }
 
     @Test
-    void checkFilesInZip() {
+    void checkFilesInZip()
+    {
+        SelenideLogger.addListener("allure", new AllureSelenide());//подключаем листенера
         //data
         String pathToZip     = "./src/test/resources/data/health.zip";
         String pathToUnzip   = "./src/test/resources/data/unzip";

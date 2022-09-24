@@ -1,6 +1,5 @@
 package tests;
 
-
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
