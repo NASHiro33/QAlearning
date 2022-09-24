@@ -1,6 +1,8 @@
 package tests;
 
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -10,6 +12,8 @@ public class TextBoxTests {
     @Test
     void checkDataInOutputTest()
     {
+        SelenideLogger.addListener("allure", new AllureSelenide());//подключаем листенера
+
         String name = "Nadin";
         String email = "ns@olol.ru";
         String currentAddress = "Moscow-city";

@@ -8,6 +8,6 @@ public class TestBase {
     @BeforeAll
     static void setup()
     {
-        Configuration.startMaximized = true;
+      //  Configuration.startMaximized = true;
     }
 }

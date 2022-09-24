@@ -103,7 +103,7 @@ public class Snippets {
 
         //longer timeouts
         $("").shouldBe(visible, Duration.ofSeconds(30));
-        $("").waitUntil(visible,30000);
+    //    $("").waitUntil(visible,30000);
 
 
     }
@@ -144,8 +144,8 @@ public class Snippets {
         $$("div"); // does nothing!
 
         // selections
-        $$("div").filterBy(text("123")).shouldHaveSize(1);
-        $$("div").excludeWith(text("123")).shouldHaveSize(1);
+//        $$("div").filterBy(text("123")).shouldHaveSize(1);
+//        $$("div").excludeWith(text("123")).shouldHaveSize(1);
 
         $$("div").first().click();
         elements("div").first().click();
@@ -156,7 +156,7 @@ public class Snippets {
         $$("div").findBy(text("123")).click(); //  finds first
 
         // assertions
-        $$("").shouldHaveSize(0);
+//        $$("").shouldHaveSize(0);
         $$("").shouldBe(CollectionCondition.empty); // the same
 
         $$("").shouldHave(texts("Alfa","Beta","Gamma"));
