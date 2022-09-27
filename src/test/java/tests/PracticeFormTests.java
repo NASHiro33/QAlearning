@@ -63,7 +63,7 @@ public class PracticeFormTests {
             $("[class='main-header']").shouldHave(text("Practice Form"));
         });
 
-        step("Заполняем форму корректными данными", () -> {
+        step("Заполняем форму корректными данными", ()-> {
             $("[id='firstName']").setValue(firstName);
             $("[id='lastName']").setValue(lastName);
             $("[id='userEmail']").setValue(email);

@@ -11,7 +11,7 @@ class CssXpathExamples {
     void cssXpathExamples() {
         open("url");
 
-        // <input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
+//         <input type="email" class="inputtext login_form_input_box" name="email" id="email" data-testid="royal_email">
         // эталон
         $(by("data-testid", "royal_email")).setValue("some@email.com");    // primary if data-testid exists
 
