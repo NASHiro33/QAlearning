@@ -44,11 +44,10 @@ test
     useJUnitPlatform()
 }
 
-task noBrowser(type: test)
+task noBrowser(type: Test)
 {
     useJUnitPlatform
             {
         includeTags 'noBrowser'
             }
-    systemProperty 'platform', 'web'
 }
