@@ -9,14 +9,14 @@ import static org.hamcrest.Matchers.is;
 public class SimpleTests
 {
     @Test
-    @Tag("NoBrowser")
+    @Tag("noBrowser")
     void checkTrueIsTrue()
     {
         assertThat(true, is(true));
     }
 
     @Test
-    @Tag("NoBrowser")
+    @Tag("noBrowser")
     void negativeCheckTrueIsFalse()
     {
         assertThat(true, is(false));
