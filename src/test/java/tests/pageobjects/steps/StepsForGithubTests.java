@@ -34,7 +34,7 @@ public class StepsForGithubTests
     }
 
     @Step("Проверяем, что на странице есть issue #{number}")
-    public void checkIssueNumberIsVisible(String number)
+    public void checkIssueNumberIsVisible(int number)
     {
         $(withText("#"+number)).shouldBe(visible);
     }

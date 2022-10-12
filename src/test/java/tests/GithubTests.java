@@ -5,6 +5,8 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import tests.pageobjects.steps.ApiSteps;
+import tests.pageobjects.steps.Issue;
 import tests.pageobjects.steps.StepsForGithubTests;
 
 import static com.codeborne.selenide.Condition.text;
@@ -16,6 +18,7 @@ import static io.qameta.allure.Allure.step;
 
 public class GithubTests
 {
+    //todo вынести листенера в отдельную функцию
     @Test
     void JUnit5ExampleInSoftAssertions()
     {
@@ -23,18 +26,18 @@ public class GithubTests
 
         open("https://github.com/selenide/selenide");
 
-        $("[id='wiki-tab']").click();
-        $("[id='user-content-chapters']").closest("h2").sibling(0)
+        $("[#wiki-tab").click();
+        $("[#user-content-chapters").closest("h2").sibling(0)
                 .$(byText("Soft assertions")).click();
 
-        $("[id='user-content-3-using-junit5-extend-test-class']")
+        $("[#user-content-3-using-junit5-extend-test-class")
                 .closest("h4").sibling(0)
                 .shouldHave(text("@ExtendWith({SoftAssertsExtension.class})"));
     }
 
     String GITHUB_URL      = "https://github.com/";
     String REPOSITORY_NAME = "eroshenkoam/allure-example";
-    String ISSUE_NUMBER    = "81";
+    int    ISSUE_NUMBER    = 81;
     @Test
     @DisplayName("Поиск номера issue в репозитории (Selenide steps)")
     @Owner("Nadya Shiro")
@@ -44,7 +47,7 @@ public class GithubTests
                 open(GITHUB_URL);
                 $("[name = 'q']").setValue(REPOSITORY_NAME).pressEnter();
                 $("a[href='/"+REPOSITORY_NAME+"']").click();
-                $("[id='issues-tab']").click();
+                $("#issues-tab").click();
                 $(withText("#"+ISSUE_NUMBER)).shouldBe(visible);
     }
 
@@ -61,7 +64,7 @@ public class GithubTests
         step("Найти " + REPOSITORY_NAME + "на странице результатов", ()->
                 $("a[href='/"+REPOSITORY_NAME+"']").click());
         step("Перейти в раздел Issues", ()->
-                $("[id='issues-tab']").click());
+                $("#issues-tab").click());
         step("Убедиться, что есть текст #" + ISSUE_NUMBER, ()->
                 $(withText("#"+ISSUE_NUMBER)).shouldBe(visible));
     }
@@ -79,5 +82,24 @@ public class GithubTests
         steps.findElementByLink(REPOSITORY_NAME);
         steps.findTabOnMenu("issues-tab");
         steps.checkIssueNumberIsVisible(ISSUE_NUMBER);
+    }
+
+    @Test
+    @DisplayName("Проверяем наличие задачи, созданной по АПИ")
+    @Owner("Nadya Shiro")
+    void issueCreatedFromApiShouldExist()
+    {
+        Issue issue = new Issue();
+        String title = "This is an issue created by API";
+        int new_issue_number = issue.getNumber();
+        ApiSteps apiSteps = new ApiSteps();
+        String repository = "NASHiro33/QAlearning";
+
+        apiSteps.createIssue(title);
+        steps.openPage(GITHUB_URL);
+        steps.searchRequest(repository);
+        steps.findElementByLink(repository);
+        steps.findTabOnMenu("issues-tab");
+        steps.checkIssueNumberIsVisible(new_issue_number);
     }
 }

@@ -20,15 +20,26 @@ allure {
             }
 }
 
+tasks.withType(JavaCompile)
+        {
+            options.encoding = 'UTF-8'
+        }
+
 sourceCompatibility = 1.8
 dependencies
         {
     testImplementation 'io.qameta.allure:allure-java-commons:2.19.0'
     testImplementation 'io.qameta.allure:allure-selenide:2.19.0'
+    testImplementation 'io.qameta.allure:allure-rest-assured:2.19.0'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4'
+    testImplementation 'io.rest-assured:rest-assured:5.2.0'
+ //   testImplementation 'io.github.bonigarcia:webdrivermanager:5.3.0'
+
     testImplementation 'com.codeborne:selenide:6.7.4'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
     testImplementation 'com.codeborne:pdf-test:1.7.0'
     testImplementation 'com.codeborne:xls-test:1.6.0'
     testImplementation 'org.apache.poi:poi:5.2.2'
@@ -44,10 +55,10 @@ test
     useJUnitPlatform()
 }
 
-task noBrowser(type: Test)
+task noBrowser//(type: Test)
 {
-    useJUnitPlatform
+    useJUnitPlatform ->
             {
-        includeTags 'noBrowser'
+        includeTags -> 'noBrowser'
             }
 }
