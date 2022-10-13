@@ -11,7 +11,7 @@ import static io.qameta.allure.Allure.step;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class SimpleTests
+public class SimpleTests extends BaseTest
 {
     @Test
     @DisplayName("Пример позитивного теста")

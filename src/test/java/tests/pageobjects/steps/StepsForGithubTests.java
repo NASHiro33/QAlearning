@@ -1,13 +1,14 @@
 package tests.pageobjects.steps;
 
 import io.qameta.allure.Step;
+import tests.BaseTest;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class StepsForGithubTests
+public class StepsForGithubTests extends BaseTest
 {
     @Step("Открываем страницу {url}")
     public void openPage(String url)

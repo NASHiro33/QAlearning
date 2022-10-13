@@ -1,9 +1,9 @@
 package tests.pageobjects.steps;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Issue implements Serializable
 {
     private int number;

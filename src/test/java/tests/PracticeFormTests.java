@@ -20,7 +20,8 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class PracticeFormTests {
+public class PracticeFormTests extends BaseTest
+{
     //todo убрать мапу и переменные в отдельный файл, а то мусорка
 
     //генерирую рандомные значения в некоторые переменные

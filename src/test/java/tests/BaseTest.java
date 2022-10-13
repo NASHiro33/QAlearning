@@ -3,11 +3,11 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 
-public class TestBase {
-
+public class BaseTest
+{
     @BeforeAll
-    static void setup()
+    public static void setUp()
     {
-      //  Configuration.startMaximized = true;
+        Configuration.browser = "firefox";
     }
 }

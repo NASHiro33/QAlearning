@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.containsString;
 import static utils.FileUtils.*;
 
 
-public class FileTests
+public class FileTests extends BaseTest
 {
     @Test
     void checkTextInPdf()

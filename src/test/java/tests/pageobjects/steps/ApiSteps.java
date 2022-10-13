@@ -3,11 +3,12 @@ package tests.pageobjects.steps;
 
 import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
+import tests.BaseTest;
 
 import static io.restassured.RestAssured.given;
 
 
-public class ApiSteps
+public class ApiSteps extends BaseTest
 {
 
  @Step("Создаем issue в github через API")
